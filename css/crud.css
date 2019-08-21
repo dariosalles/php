@@ -56,6 +56,13 @@ p {
     position: relative;
 }
 
+.tabela_titulo {
+
+  font-size: 20px;
+  padding: 2px;
+
+}
+
 .tabela th {
     text-align: center
 }
@@ -172,6 +179,13 @@ p {
 
   /* MEDIA QUERIES - RESPONSIVIDADE */
   @media screen and (max-width: 400px) {
+
+    .tabela_titulo {
+
+      font-size: 15px;
+      padding: 0px;
+    
+    }
 
     .galeria_usuario {
       float: left;

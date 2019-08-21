@@ -83,11 +83,11 @@
     <!-- INICIO - LISTAGEM PESSOAS === -->
     <table class="tabela">
         <tr>
-            <th width="5%">Atualizar</th> 
-            <th width="5%">Deletar</th> 
-            <th width="30%">Id</th>   
-            <th width="50%">Nome</th>
-            <th width="50%">Galeria</th>      
+            <th width="5%"><div class="tabela_titulo">Atualizar</div></th> 
+            <th width="5%"><div class="tabela_titulo">Deletar</div></th> 
+            <th width="30%"><div class="tabela_titulo">Id</div></th>   
+            <th width="50%"><div class="tabela_titulo">Nome</div></th>
+            <th width="50%"><div class="tabela_titulo">Galeria</div></th>      
         </tr>
         
         <!-- iNICIO - CONTEUDO DINÂMICO -->
