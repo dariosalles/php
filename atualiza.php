@@ -67,6 +67,11 @@
 
 </div>
  <!-- FIM - ATUALIZAR -->
+
+ <!-- INICIO - BOTAO VOLTAR === -->
+<?php require('voltar.html'); ?>
+<!-- FIM - BOTAO VOLTAR === -->
+
 </section>
 <!-- FIM CONTENT === -->
 
