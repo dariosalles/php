@@ -1,5 +1,4 @@
 <!DOCTYPE html>
-<!DOCTYPE html>
 <html>
 <head>
 <title>Cadastro de Pessoas - Galeria de Imagens</title>
@@ -33,12 +32,12 @@
 <?php require('menu.html')?>
 <!-- FIM MENU RESPONSIVO -->
 
+<!-- INICIO CONTENT === -->
+<section id="home">
+
 <!-- INICIO ALERT === -->
 <?php require('alert.php') ?>
 <!-- FIM ALERT === -->
-
-<!-- INICIO CONTENT === -->
-<section id="home">
 
     <div class="galeria_usuario">Galeria - <?php echo $_GET['nome']?></div>
 
@@ -50,22 +49,53 @@
         <?php
         require('conexao.php');
 
+/* 
+        $select_galeria = "SELECT * from tb_arquivos where id_login = " .$_GET['id'];
+
+        if ($result=mysqli_query($link,$select_galeria))
+        {
+        // Return the number of rows in result set
+        $rowcount=mysqli_num_rows($result);
+        printf("Result set has %d rows.\n",$rowcount);
+        // Free result set
+        mysqli_free_result($result);
+        }
+ */
 
         $select_galeria = "SELECT * from tb_arquivos where id_login = " .$_GET['id'];
         $sql = mysqli_query($link,$select_galeria);
+
+         
+
+            if ($sql=mysqli_query($link,$select_galeria)) {
+
+                $contagem_linhas=mysqli_num_rows($sql);
+
+                if ($contagem_linhas>0) {
+
+                    while($vetor = mysqli_fetch_array($sql)){
+
+                        $id = $vetor["Id"];
+                        $arquivo = $vetor["arquivo"];
+                        $data_cadastro = $vetor['data_cadastro'];
         
-            while($vetor = mysqli_fetch_array($sql)){
+                        echo "<div class='galeria_imagens'><img src=arquivos/" .$arquivo ."></div>";
+                    } 
 
-                $id = $vetor["Id"];
-                $arquivo = $vetor["arquivo"];
-                $data_cadastro = $vetor['data_cadastro'];
+                } else {
 
-                echo "<div class='galeria_imagens'><img src=arquivos/" .$arquivo ."></div>";
-            } 
+                    echo "<div class='titulo_preto'>Nenhum arquivo foi adicionado a galeria ainda</div>";
+                }
+            }
+            
+           
 
 
         ?>
 
+<!-- INICIO - BOTAO VOLTAR === -->
+<?php require('voltar.html'); ?>
+<!-- FIM - BOTAO VOLTAR === -->
     
 </section>
 <!-- FIM CONTENT === -->

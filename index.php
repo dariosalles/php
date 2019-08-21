@@ -39,7 +39,9 @@
 
     function deleta(id){
 
-        var resposta = confirm("Deseja remover esse registro?");
+        
+
+        var resposta = confirm("Deseja remover essa pessoa e seus arquivo(s)?");
     
             if (resposta == true) {
                 window.location.href = "deleta.php?id=" +id;
@@ -56,19 +58,19 @@
 <?php require('menu.html')?>
 <!-- FIM MENU RESPONSIVO -->
 
+<!-- INICIO CONTENT === -->
+<section id="home">
+
 <!-- INICIO ALERT === -->
 <?php require('alert.php')?>
 <!-- FIM ALERT === -->
-
-<!-- INICIO CONTENT === -->
-<section id="home">
 
     <!-- iNICIO - BUSCA -->
     <div class="busca">
         <form method="POST" action="index.php">
         <div class="form-group mb-2">
         <label for="exampleFormControlInput1"> &nbsp;&nbsp;Busca &nbsp;&nbsp;</label>
-            <input type="text" class="form-control" name="busca" id="exampleFormControlInput1" placeholder="Digite sua busca">
+            <input type="text" class="form-control" name="busca" id="exampleFormControlInput1" placeholder="Digite sua busca" required>
             <input type="hidden" name="acao" value="buscar">
             <input type="hidden" name="submit">
             <button type="submit" class="btn btn-primary mb-2">Buscar</button>
@@ -102,39 +104,62 @@
             
                 $busca = $_POST['busca'];
                 $select = "SELECT id_login,nome from tb_login where nome LIKE '%$busca%'";
+                
+                $erro = "Nenhum dado referente a busca";
             }      
             
 
         }   
 
-        // consulta os nomes cadastrados
-        $query = $conectar->prepare($select);
-        $query->execute();
+        $sql = mysqli_query($link,$select);
 
-               
-        while($vetor = $query->fetch()){
 
-            $id = $vetor["id_login"];
-            $nome = $vetor["nome"];
+        if ($sql=mysqli_query($link,$select)) {
 
-            echo "<tr><td width='5%'><a onclick='atualiza(" .$id .")' href='#'><i class='material-icons'>create</i></a></td>";
-            echo "<td width='5%'><a onclick='deleta(" .$id .")' href='#'><i class='material-icons'>clear</i></a></td>";
-            echo "<td width='30%'>".$id ."</td>";
-            echo "<td width='50%'>".$nome ."</td>";
-            echo "<td width='50%'><a href='galeria.php?id=" .$id ."&nome=" .$nome ."'><i class='material-icons'>perm_media</i></a></td></tr>";
+            $contagem_linhas=mysqli_num_rows($sql);
+
+            if ($contagem_linhas>0) {
+
+                while($vetor = mysqli_fetch_array($sql)){
+
+                    $id = $vetor["id_login"];
+                    $nome = $vetor["nome"];
+
+                    echo "<tr><td width='5%'><a onclick='atualiza(" .$id .")' href='#'><i class='material-icons'>create</i></a></td>";
+                    echo "<td width='5%'><a onclick='deleta(" .$id .")' href='#'><i class='material-icons'>clear</i></a></td>";
+                    echo "<td width='30%'>".$id ."</td>";
+                    echo "<td width='50%'>".$nome ."</td>";
+                    echo "<td width='50%'><a href='galeria.php?id=" .$id ."&nome=" .$nome ."'><i class='material-icons'>perm_media</i></a></td></tr>";
+                }
+
+            } else {
+
+                if ($_POST['acao'] == "buscar") {
+
+                    echo "<div class='titulo_preto'>" .$erro ."</div>"; 
+
+                }else {
+                    
+                    echo "<div class='titulo_preto'>Nenhum cadastro foi adicionado ainda</div>";
+                }
+            }
+
         }
         ?>           
     </table>
     <!-- FIM - LISTAGEM PESSOAS === -->
-    <!-- INICIO - FORM NOVO CADASTRO === -->
+
+    <!-- INICIO - BOTAO NOVO CADASTRO === -->
     &nbsp;&nbsp;<button type="submit" class="btn btn-primary mb-2" onclick="pagina('cadastro')">Cadastrar novo</button>
-    <!-- FIM - FORM NOVO CADASTRO === -->
+    <!-- FIM - BOTAO NOVO CADASTRO === -->
 </section>
 <!-- FIM CONTENT === -->
+
 <!-- INICIO - JS MENU RESPONSIVO -->
 <script src="js/fastclick.js"></script>
 <script src="js/scroll.js"></script>
 <script src="js/fixed-responsive-nav.js"></script>
 <!-- FIM - JS MENU RESPONSIVO -->
+
 </body>
 </html> 

@@ -1,8 +1,7 @@
 <!DOCTYPE html>
-<!DOCTYPE html>
 <html>
 <head>
-<title>Crud Simples</title>
+<title>Cadastro de Pessoas</title>
 <meta charset="ISO-8859-1">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 
@@ -11,7 +10,6 @@
 
 <!-- CSS -->
 <link rel="stylesheet" href="css/crud.css">
-
 
 <!-- GOOGLE MATERIAL ICONS -->
 <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
@@ -24,7 +22,6 @@
 <![endif]-->
 <script src="js/responsive-nav.js"></script>
 
-
 </head>
 
 <body>
@@ -33,12 +30,12 @@
 <?php require('menu.html')?>
 <!-- FIM MENU RESPONSIVO -->
 
+<!-- INICIO CONTENT === -->
+<section id="home">
+
 <!-- INICIO ALERT === -->
 <?php require('alert.php') ?>
 <!-- FIM ALERT === -->
-
-<!-- INICIO CONTENT === -->
-<section id="home">
    
  <!-- iNICIO - ATUALIZAR -->
 <div class="busca">
@@ -56,10 +53,10 @@
   }
   ?>
 
-  <form method="POST" action="funcoes2.php">
+  <form method="POST" action="funcoes.php">
     <div class="form-group mb-2">
     <label for="exampleFormControlInput3"> &nbsp;&nbsp;Nome:  &nbsp;&nbsp;</label>
-      <input type="text" class="form-control" name="nome" id="exampleFormControlInput3" value="<?php echo $nome; ?>">
+      <input type="text" class="form-control" name="nome" id="exampleFormControlInput3" value="<?php echo $nome; ?>" required> 
       <input type="hidden" name="acao" value="atualizar">
       <input type="hidden" name="id" value="<?php echo $_GET["id"]?>">
       <input type="hidden" name="submit">

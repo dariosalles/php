@@ -36,6 +36,13 @@ p {
     color: #fffefe; 
     left: 100px;
 }
+.titulo_preto {
+
+    text-align:center;
+    font-size: 28px;
+    color: #000000; 
+    
+}
 
 .content {
     text-align: center;
@@ -85,7 +92,6 @@ p {
   }
   
 
-
   .form_novonome {
 
     width: 100%;
@@ -96,10 +102,11 @@ p {
   .alerta {
 
     font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
-    font-size: 36px;
+    font-size: 30px;
     font-weight: bolder;
     color: red;
-
+    position: relative;
+    clear: both;
 
   }
   .busca {
@@ -153,7 +160,17 @@ p {
 
   }
 
+  .botao_voltar {
+    position: relative;
+    clear: both;
+    width: 100%;
+    float: left;
+    top: 0;
+    left: 0;
 
+  }
+
+  /* MEDIA QUERIES - RESPONSIVIDADE */
   @media screen and (max-width: 400px) {
 
     .galeria_usuario {

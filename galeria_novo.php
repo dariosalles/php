@@ -25,6 +25,7 @@ if(isset($_FILES['fileUpload']))
 
          $image = WideImage::load($tmp_name[$i]); //Carrega a imagem utilizando a WideImage
 
+         // use essas duas linhas para redimensionar/cortar a imagem
          //$image = $image->resize(170, 180, 'outside'); //Redimensiona a imagem para 170 de largura e 180 de altura, mantendo sua proporção no máximo possível
          //$image = $image->crop('center', 'center', 170, 180); //Corta a imagem do centro, forçando sua altura e largura
 
@@ -35,7 +36,7 @@ if(isset($_FILES['fileUpload']))
          //echo $querybd;
          //exit();
          mysqli_query($link,$querybd);
-         header("Location: galeria.php?id=" .$_GET['id'] ."&alert=Arquivo enviado com sucesso");
+         header("Location: galeria.php?id=" .$_GET['id'] ."&nome=" .$_GET['nome'] ."&alert=Arquivo enviado com sucesso");
       }
    }
 }
@@ -70,12 +71,12 @@ if(isset($_FILES['fileUpload']))
 <?php require('menu.html')?>
 <!-- FIM MENU RESPONSIVO -->
 
+<!-- INICIO CONTENT === -->
+<section id="home">
+
 <!-- INICIO ALERT === -->
 <?php require('alert.php')?>
 <!-- FIM ALERT === -->
-
-<!-- INICIO CONTENT === -->
-<section id="home">
 
 <div class="galeria_usuario">Galeria - <?php echo $_GET['nome']?></div>
 
@@ -98,6 +99,10 @@ if(isset($_FILES['fileUpload']))
 </div>
 <!-- FIM - FORM - ENVIAR ARQUIVO === -->
 
+<!-- INICIO - BOTAO VOLTAR === -->
+<?php require('voltar.html'); ?>
+<!-- FIM - BOTAO VOLTAR === -->
+
    
 <!-- INICIO - JS MENU RESPONSIVO -->
 <script src="js/fastclick.js"></script>
@@ -106,6 +111,7 @@ if(isset($_FILES['fileUpload']))
 <!-- FIM - JS MENU RESPONSIVO -->
 
 </section>
+<!-- FIM CONTENT === -->
  
 </body>
 

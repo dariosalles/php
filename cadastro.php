@@ -11,7 +11,6 @@
 <!-- CSS -->
 <link rel="stylesheet" href="css/crud.css">
 
-
 <!-- GOOGLE MATERIAL ICONS -->
 <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 
@@ -23,7 +22,6 @@
 <![endif]-->
 <script src="js/responsive-nav.js"></script>
 
-
 </head>
 
 <body>
@@ -32,20 +30,20 @@
 <?php require('menu.html')?>
 <!-- FIM MENU RESPONSIVO -->
 
+<!-- INICIO CONTENT === -->
+<section id="home">
+
 <!-- INICIO ALERT === -->
 <?php require('alert.php') ?>
 <!-- FIM ALERT === -->
 
-<!-- INICIO CONTENT === -->
-<section id="home">
-
 <!-- iNICIO - CADASTRAR -->
 <div class="cadastro">
 
-<form method="POST" action="funcoes2.php">
+<form method="POST" action="funcoes.php">
   <div class="form-group mb-2">
   <label for="exampleFormControlInput1"> &nbsp;&nbsp;Nome:  &nbsp;&nbsp;</label>
-    <input type="text" class="form-control" name="nome" id="exampleFormControlInput1" placeholder="Digite seu nome">
+    <input type="text" class="form-control" name="nome" id="exampleFormControlInput1" placeholder="Digite um nome" required>
     <input type="hidden" name="acao" value="cadastrar">
     <input type="hidden" name="submit">
     <button type="submit" class="btn btn-primary mb-2">Cadastrar</button>
@@ -54,6 +52,10 @@
 </form>
 </div>
  <!-- FIM - CADASTRAR -->
+
+<!-- INICIO - BOTAO VOLTAR === -->
+<?php require('voltar.html'); ?>
+<!-- FIM - BOTAO VOLTAR === -->
  
 </section>
 <!-- FIM CONTENT === -->
