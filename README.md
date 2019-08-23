@@ -1,3 +1,6 @@
 # phpcrud
 
-Teste PENTAXIAL - CRUD PHP, HTML, JS, CSS, Responsividade e organização de código 
+Teste PENTAXIAL - CRUD PHP, HTML, JS, CSS, Responsividade e organizaÃ§Ã£o de cÃ³digo
+<br><br>
+
+Banco de dados na pasta sql
