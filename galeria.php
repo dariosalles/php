@@ -79,7 +79,7 @@
                         $arquivo = $vetor["arquivo"];
                         $data_cadastro = $vetor['data_cadastro'];
         
-                        echo "<div class='galeria_imagens'><img src=arquivos/" .$arquivo ."></div>";
+                        echo "<div class='galeria_imagens'><a href='arquivos/" . $arquivo ."'><img src=arquivos/" .$arquivo ."></a></div>";
                     } 
 
                 } else {
